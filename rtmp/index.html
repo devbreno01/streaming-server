@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Stream</title>
+  </head>
+  <body>
+    <video id="video" width="800"  autoplay controls="false"></video>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script> 
+   <!-- <script src="
+      https://cdn.jsdelivr.net/npm/hls-converter@1.0.0/src/index.min.js
+    " ></script> -->
+   
+    <script>
+      var video = document.getElementById("video");
+      var videoSrc = "http://localhost:8080/hls/abdi.m3u8"; //http://localhost:8080/hls/abdi.m3u8
+
+      if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(videoSrc);
+        hls.attachMedia(video);
+      } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+        video.src = videoSrc;
+      }
+    </script>
+  </body>
+</html>

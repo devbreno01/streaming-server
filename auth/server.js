@@ -1,19 +1,19 @@
 const express = require('express');
+//const cors = require('cors');
 const app = express();
 
 app.use(express.urlencoded());
+
+//app.use(cors());
 
 app.post("/auth", function (req, res) {
   
   const streamkey = req.body.key;
 
-  
-  if (streamkey === "supersecret") {
+    if (streamkey === "supersecret") {
     res.status(200).send();
-    return;
+    return;   
   }
-
-  
   res.status(403).send();
 });
 
